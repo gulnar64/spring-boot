@@ -1,2 +1,13 @@
-spring.mvc.view.prefix=/WEB-INF/views/
-spring.mvc.view.suffix=.jsp
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: user
+    password: "12345"
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
