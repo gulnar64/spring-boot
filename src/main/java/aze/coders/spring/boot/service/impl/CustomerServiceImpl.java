@@ -4,6 +4,9 @@ import aze.coders.spring.boot.entity.Customer;
 import aze.coders.spring.boot.repository.CustomerRepository;
 import aze.coders.spring.boot.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -12,13 +15,13 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     @Override
-    public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+    public Page<Customer> getAllCustomers(Integer page, Integer size) {
+        return customerRepository.findAllByOrderById(PageRequest.of(page,size));
     }
 
     @Override
-    public List<Customer> getAllCustomersByName(String name) {
+    public Page<Customer> getAllCustomersByName(String name) {
         customerRepository.deleteNameByLength(15);
-        return customerRepository.findAll();
+        return customerRepository.findAll(PageRequest.of(1,2));
     }
 }

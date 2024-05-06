@@ -1,11 +1,12 @@
 package aze.coders.spring.boot.service;
 
 import aze.coders.spring.boot.entity.Customer;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface CustomerService{
-    List<Customer> getAllCustomers();
+    Page<Customer> getAllCustomers(Integer page, Integer size);
 
-    List<Customer> getAllCustomersByName(String name);
+    Page<Customer> getAllCustomersByName(String name);
 }
